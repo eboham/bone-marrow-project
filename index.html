@@ -206,6 +206,7 @@
             position: relative;
             z-index: 2;
             margin: 0;
+            text-transform: capitalize; /* Apply title case */
         }
 
 
@@ -235,6 +236,41 @@
             color: #2c5f7c;
             font-size: 1.3rem;
             margin-bottom: 1rem;
+        }
+
+        /* About Project specific styles */
+        .about-section {
+            display: flex;
+            align-items: flex-start; /* Align items to the start of the cross axis */
+            gap: 2rem;
+            margin-bottom: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 2rem;
+        }
+
+        .about-section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .about-section .content-box {
+            flex: 2; /* Make text box wider */
+            padding-right: 1rem; /* Add some padding for visual separation */
+        }
+
+        .about-section .image-box {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
         }
 
         /* Collaborators */
@@ -379,6 +415,37 @@
             transition: width 0.8s ease;
         }
 
+        /* Collaboration History Thumbnail */
+        .collaboration-history-section {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-top: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 2rem;
+        }
+
+        .collaboration-history-section .text-content {
+            flex: 2;
+        }
+
+        .collaboration-history-section .thumbnail-box {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .collaboration-history-section .thumbnail-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+
+
         /* Footer */
         footer {
             background: #2c5f7c;
@@ -444,6 +511,20 @@
             .page-header h2 {
                 font-size: 2rem;
             }
+
+            .about-section {
+                flex-direction: column !important; /* Stack columns on small screens */
+            }
+
+            .about-section .content-box,
+            .about-section .image-box {
+                flex: none; /* Remove flex sizing */
+                width: 100%; /* Take full width */
+                padding-right: 0; /* Remove extra padding */
+            }
+            .collaboration-history-section {
+                flex-direction: column;
+            }
         }
 
         @media (max-width: 480px) {
@@ -507,13 +588,19 @@
 
         <div id="about" class="page">
             <div class="page-header" style="background-image: url('https://github.com/eboham/bone-marrow-project/blob/main/b.jpeg?raw=true');">
-                <h2>About the Project</h2>
+                <h2>About The Project</h2>
             </div>
             
-            <h3>Background</h3>
-            <p>Plasmodium falciparum has a complex life cycle, in which asexual replication and sexual development take place in red blood cells (RBCs) of the human host and sexual reproduction in the mosquito vector. Though the asexual stages are responsible for all morbidity and mortality, successful transmission is dependent on generation of the sexual stages, termed gametocytes.</p>
-            
-            <p>The human bone marrow (hBM) is a major site for the sequestration of P. falciparum gametocytes and acts as a privileged niche for their maturation and protection. Recent studies specifically revealed that P. falciparum gametocytes are readily and preferentially found in the hBM extravascular spaces, in contact with several stromal cell types.</p>
+            <div class="about-section">
+                <div class="content-box">
+                    <h3>Background</h3>
+                    <p>Plasmodium falciparum has a complex life cycle, in which asexual replication and sexual development take place in red blood cells (RBCs) of the human host and sexual reproduction in the mosquito vector. Though the asexual stages are responsible for all morbidity and mortality, successful transmission is dependent on generation of the sexual stages, termed gametocytes.</p>
+                    <p>The human bone marrow (hBM) is a major site for the sequestration of P. falciparum gametocytes and acts as a privileged niche for their maturation and protection. Recent studies specifically revealed that P. falciparum gametocytes are readily and preferentially found in the hBM extravascular spaces, in contact with several stromal cell types.</p>
+                </div>
+                <div class="image-box">
+                    <img src="https://github.com/eboham/bone-marrow-project/blob/main/parasite_lifecycle_mmv.jpg?raw=true" alt="Parasite Lifecycle">
+                </div>
+            </div>
 
             <h3>Research Objectives</h3>
             <div class="card-grid">
@@ -531,11 +618,25 @@
                 </div>
             </div>
 
-            <h3>Study Location</h3>
-            <p>Malaria is endemic in all parts of Ghana including the Volta and Northern regions, where transmission is seasonal. The average asymptomatic malaria prevalence ranges from 35-66%. The study sites have an average of 3-14 orthopedic surgeries per week yielding bone marrow/biopsy donations with 40% malaria parasite positivity by PCR.</p>
+            <div class="about-section reverse">
+                <div class="content-box">
+                    <h3>Study Location</h3>
+                    <p>Malaria is endemic in all parts of Ghana including the Volta and Northern regions, where transmission is seasonal. The average asymptomatic malaria prevalence ranges from 35-66%. The study sites have an average of 3-14 orthopedic surgeries per week yielding bone marrow/biopsy donations with 40% malaria parasite positivity by PCR.</p>
+                </div>
+                <div class="image-box">
+                    <img src="https://github.com/eboham/bone-marrow-project/blob/main/ghana.png?raw=true" alt="Map of Ghana">
+                </div>
+            </div>
 
-            <h3>Expected Impact</h3>
-            <p>This research project's multi-faceted approach contributes to a comprehensive understanding of the complex interplay between the parasite and its host, shedding light on potential factors affecting gametocytogenesis and transmission dynamics. The findings will inform new strategies for malaria control and elimination efforts.</p>
+            <div class="about-section">
+                <div class="content-box">
+                    <h3>Expected Impact</h3>
+                    <p>This research project's multi-faceted approach contributes to a comprehensive understanding of the complex interplay between the parasite and its host, shedding light on potential factors affecting gametocytogenesis and transmission dynamics. The findings will inform new strategies for malaria control and elimination efforts.</p>
+                </div>
+                <div class="image-box">
+                    <img src="https://github.com/eboham/bone-marrow-project/blob/main/wmd.png?raw=true" alt="Expected Impact">
+                </div>
+            </div>
         </div>
 
         <div id="collaborations" class="page">
@@ -581,6 +682,9 @@
             <h3>Institutional Partners</h3>
             <div class="institution-logos">
                 <div class="logo-placeholder">
+                    <img src="https://github.com/eboham/bone-marrow-project/blob/main/project%20logo.png?raw=true" alt="Project Logo" class="institution-logo-img">
+                </div>
+                <div class="logo-placeholder">
                     <img src="https://github.com/eboham/bone-marrow-project/blob/main/Iss.png?raw=true" alt="ISS Logo" class="institution-logo-img">
                 </div>
                 <div class="logo-placeholder">
@@ -592,7 +696,14 @@
             </div>
 
             <h3>Collaboration History</h3>
-            <p>The collaboration between the ISS and Dr. Dinko's team dates back to the ISS workshop "Malaria Transmission - Cellular Biology and Human Genetics" in 2018. The partnership was strengthened through the UK Royal Society collaborative grant "Origin and development of maturing gametocytes of Plasmodium falciparum in deep tissues and peripheral circulation" and continues to develop through the Italia-Africa PhD program.</p>
+            <div class="collaboration-history-section">
+                <div class="text-content">
+                    <p>The collaboration between the ISS and Dr. Dinko's team dates back to the ISS workshop "Malaria Transmission - Cellular Biology and Human Genetics" in 2018. The partnership was strengthened through the UK Royal Society collaborative grant "Origin and development of maturing gametocytes of Plasmodium falciparum in deep tissues and peripheral circulation" and continues to develop through the Italia-Africa PhD program.</p>
+                </div>
+                <div class="thumbnail-box">
+                    <img src="https://github.com/eboham/bone-marrow-project/blob/main/ookinete.jpeg?raw=true" alt="Ookinete Thumbnail" class="thumbnail-img">
+                </div>
+            </div>
         </div>
 
         <div id="literature" class="page">
