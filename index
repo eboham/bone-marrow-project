@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unveiling P. falciparum and Bone Marrow Microenvironment Interactions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c5f7c 0%, #1e4a5f 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #87ceeb;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav a.active {
+            color: #87ceeb;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 95, 124, 0.8), rgba(30, 74, 95, 0.8)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="molecules" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="3" fill="%23ffffff" opacity="0.1"/><circle cx="50" cy="40" r="2" fill="%23ffffff" opacity="0.08"/><circle cx="80" cy="15" r="2.5" fill="%23ffffff" opacity="0.06"/><circle cx="15" cy="60" r="2" fill="%23ffffff" opacity="0.09"/><circle cx="70" cy="80" r="3" fill="%23ffffff" opacity="0.07"/></pattern></defs><rect width="100%" height="100%" fill="url(%23molecules)"/></svg>');
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #4a90a4, #87ceeb);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .page {
+            display: none;
+            padding: 2rem 0;
+            min-height: 60vh;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .page h2 {
+            color: #2c5f7c;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        .page h3 {
+            color: #4a90a4;
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 3px solid #87ceeb;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .card h4 {
+            color: #2c5f7c;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Collaborators */
+        .collaborator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .collaborator-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .collaborator-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .profile-placeholder {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #87ceeb, #4a90a4);
+            margin: 0 auto 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .institution-logos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .logo-placeholder {
+            height: 100px;
+            background: #f0f0f0;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-weight: bold;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #4a90a4, #87ceeb);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            flex: 1;
+            max-width: 45%;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 0 2rem;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: #4a90a4;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        /* Progress bars */
+        .progress-section {
+            margin: 2rem 0;
+        }
+
+        .progress-item {
+            margin: 1.5rem 0;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c5f7c;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4a90a4, #87ceeb);
+            border-radius: 4px;
+            transition: width 0.8s ease;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c5f7c;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #2c5f7c;
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: row !important;
+            }
+
+            .timeline-content {
+                max-width: calc(100% - 60px);
+                margin-left: 40px;
+                margin-right: 0;
+            }
+
+            .timeline-marker {
+                left: 20px;
+            }
+
+            .card-grid,
+            .collaborator-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content {
+                padding: 0 10px;
+            }
+
+            main {
+                padding: 0 10px;
+            }
+
+            .hero-content {
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">BM & Gam Research</div>
+            <nav>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+                <ul id="nav-menu">
+                    <li><a href="#" onclick="showPage('home')" class="active">Home</a></li>
+                    <li><a href="#" onclick="showPage('about')">About Project</a></li>
+                    <li><a href="#" onclick="showPage('collaborations')">Collaborations</a></li>
+                    <li><a href="#" onclick="showPage('literature')">Literature Review</a></li>
+                    <li><a href="#" onclick="showPage('progress')">Progress</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero" id="home-hero">
+        <div class="hero-content">
+            <h1>Unveiling P. falciparum Gametocyte Dynamics</h1>
+            <p>Insights from Bone Marrow Microenvironment Interactions in Asymptomatic Malaria</p>
+            <a href="#" class="cta-button" onclick="showPage('about')">Explore the Research</a>
+        </div>
+    </div>
+
+    <main>
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <h2>Understanding Malaria Transmission</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>🔬 Advanced Research</h4>
+                    <p>Investigating the complex interactions between Plasmodium falciparum gametocytes and the human bone marrow microenvironment using cutting-edge histological and molecular techniques.</p>
+                </div>
+                <div class="card">
+                    <h4>🌍 Global Impact</h4>
+                    <p>Collaborative research between Italy and Ghana aimed at understanding malaria transmission dynamics in endemic regions to develop better intervention strategies.</p>
+                </div>
+                <div class="card">
+                    <h4>🎓 PhD Project</h4>
+                    <p>Part of the Italia-Africa PhD program fostering international collaboration in infectious disease research and capacity building in African institutions.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Project Page -->
+        <div id="about" class="page">
+            <h2>About the Project</h2>
+            
+            <h3>Background</h3>
+            <p>Plasmodium falciparum has a complex life cycle, in which asexual replication and sexual development take place in red blood cells (RBCs) of the human host and sexual reproduction in the mosquito vector. Though the asexual stages are responsible for all morbidity and mortality, successful transmission is dependent on generation of the sexual stages, termed gametocytes.</p>
+            
+            <p>The human bone marrow (hBM) is a major site for the sequestration of P. falciparum gametocytes and acts as a privileged niche for their maturation and protection. Recent studies specifically revealed that P. falciparum gametocytes are readily and preferentially found in the hBM extravascular spaces, in contact with several stromal cell types.</p>
+
+            <h3>Research Objectives</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Task 1: Histological Analysis</h4>
+                    <p>Analyzing human bone marrow biopsies from malaria-infected asymptomatic individuals to identify P. falciparum gametocytes' presence and localization within the bone marrow microenvironment.</p>
+                </div>
+                <div class="card">
+                    <h4>Task 2: Co-culture Systems</h4>
+                    <p>Establishing 3D co-culture systems using bone marrow stromal and endothelial cells along with P. falciparum-infected cells to examine how bone marrow host cells influence gametocytogenesis induction.</p>
+                </div>
+                <div class="card">
+                    <h4>Task 3: Epidemiological Study</h4>
+                    <p>Collecting molecular and histological data from malaria-infected individuals during two transmission seasons to investigate epidemiological parameters associated with P. falciparum gametocyte presence in bone marrow.</p>
+                </div>
+            </div>
+
+            <h3>Study Location</h3>
+            <p>Malaria is endemic in all parts of Ghana including the Volta and Northern regions, where transmission is seasonal. The average asymptomatic malaria prevalence ranges from 35-66%. The study sites have an average of 3-14 orthopedic surgeries per week yielding bone marrow/biopsy donations with 40% malaria parasite positivity by PCR.</p>
+
+            <h3>Expected Impact</h3>
+            <p>This research project's multi-faceted approach contributes to a comprehensive understanding of the complex interplay between the parasite and its host, shedding light on potential factors affecting gametocytogenesis and transmission dynamics. The findings will inform new strategies for malaria control and elimination efforts.</p>
+        </div>
+
+        <!-- Collaborations Page -->
+        <div id="collaborations" class="page">
+            <h2>Collaborations</h2>
+            
+            <h3>Key Collaborators</h3>
+            <div class="collaborator-grid">
+                <div class="collaborator-card">
+                    <div class="profile-placeholder">FS</div>
+                    <h4>Dr. Francesco Silvestrini</h4>
+                    <p><strong>Principal Investigator</strong></p>
+                    <p>Istituto Superiore di Sanità (ISS), Rome, Italy</p>
+                    <p>Expert in P. falciparum transmission stages biology with over 25 years of experience. H-index: 21, Publications: 38</p>
+                </div>
+                
+                <div class="collaborator-card">
+                    <div class="profile-placeholder">BD</div>
+                    <h4>Dr. Bismarck Dinko</h4>
+                    <p><strong>Co-Principal Investigator</strong></p>
+                    <p>Kwame Nkrumah University of Science and Technology (KNUST), Ghana</p>
+                    <p>Senior Lecturer and Group Leader specializing in malaria transmission biology and immunology. H-index: 9, Publications: 17</p>
+                </div>
+                
+                <div class="collaborator-card">
+                    <div class="profile-placeholder">GS</div>
+                    <h4>Dr. Giulia Siciliano</h4>
+                    <p><strong>Researcher</strong></p>
+                    <p>Istituto Superiore di Sanità (ISS), Rome, Italy</p>
+                    <p>Expert in parasite-human bone marrow cell 3D and organoid co-culture systems</p>
+                </div>
+                
+                <div class="collaborator-card">
+                    <div class="profile-placeholder">EB</div>
+                    <h4>Eric Ebenezer Amprofi Boham</h4>
+                    <p><strong>PhD Candidate</strong></p>
+                    <p>Sapienza University of Rome / KNUST</p>
+                    <p>MPhil. Molecular Medicine, specializing in infectious disease research</p>
+                </div>
+            </div>
+
+            <h3>Institutional Partners</h3>
+            <div class="institution-logos">
+                <div class="logo-placeholder">
+                    Istituto Superiore di Sanità (ISS)<br>Rome, Italy
+                </div>
+                <div class="logo-placeholder">
+                    Kwame Nkrumah University<br>of Science and Technology<br>(KNUST), Ghana
+                </div>
+                <div class="logo-placeholder">
+                    Sapienza University<br>of Rome, Italy
+                </div>
+                <div class="logo-placeholder">
+                    Ho Teaching Hospital<br>Volta Region, Ghana
+                </div>
+                <div class="logo-placeholder">
+                    St Anthony's Hospital<br>Volta Region, Ghana
+                </div>
+                <div class="logo-placeholder">
+                    Tamale Teaching Hospital<br>Northern Region, Ghana
+                </div>
+            </div>
+
+            <h3>Collaboration History</h3>
+            <p>The collaboration between the ISS and Dr. Dinko's team dates back to the ISS workshop "Malaria Transmission - Cellular Biology and Human Genetics" in 2018. The partnership was strengthened through the UK Royal Society collaborative grant "Origin and development of maturing gametocytes of Plasmodium falciparum in deep tissues and peripheral circulation" and continues to develop through the Italia-Africa PhD program.</p>
+        </div>
+
+        <!-- Literature Review Page -->
+        <div id="literature" class="page">
+            <h2>Literature Review</h2>
+            <div class="card">
+                <h4>📚 Comprehensive Literature Analysis</h4>
+                <p>This section will contain a detailed review of current literature on P. falciparum gametocyte biology, bone marrow microenvironment interactions, and malaria transmission dynamics.</p>
+                <p><em>Content will be added as the research progresses...</em></p>
+            </div>
+            
+            <h3>Key Research Areas</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Gametocyte Sequestration</h4>
+                    <p>Studies on gametocyte accumulation in human bone marrow and preferential localization in extravascular spaces.</p>
+                </div>
+                <div class="card">
+                    <h4>Bone Marrow Microenvironment</h4>
+                    <p>Research on the role of bone marrow stromal cells and their interactions with malaria parasites.</p>
+                </div>
+                <div class="card">
+                    <h4>Transmission Dynamics</h4>
+                    <p>Epidemiological studies on factors affecting gametocyte production and malaria transmission.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Page -->
+        <div id="progress" class="page">
+            <h2>Project Progress</h2>
+            
+            <h3>Overall Progress</h3>
+            <div class="progress-section">
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Task 1: Histological Analysis</span>
+                        <span>60%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Task 2: Co-culture Systems</span>
+                        <span>25%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 25%"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Task 3: Epidemiological Study</span>
+                        <span>15%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 15%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Timeline of Achievements</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>June 2024 - Project Initiation</h4>
+                        <p>PhD candidate Eric Boham arrived in Rome and began comprehensive training in malaria parasite culture, histological techniques, and immunohistochemistry assays.</p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>July-August 2024 - Sample Processing</h4>
+                        <p>25 bone marrow biopsies from Ghanaian asymptomatic malaria patients were processed and embedded in paraffin. Hematoxylin and eosin staining completed for all samples.</p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>September 2024 - Technical Optimization</h4>
+                        <p>Identified technical challenges with sample fragmentation. Adopted Hammersmith protocol for improved sample processing. Participated in BeMM Symposium at Sapienza University.</p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>October 2024 - Immunohistochemistry</h4>
+                        <p>Began immunofluorescence and immunohistochemistry assays using anti-Pfg 27 and anti-Pfs 16 antibodies for gametocyte identification. Image acquisition with 3D-Thunder microscope initiated.</p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>2025 - Upcoming Milestones</h4>
+                        <p>Technology transfer to KNUST, establishment of co-culture systems, and collection of new samples during malaria transmission seasons in Ghana.</p>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+            </div>
+
+            <h3>Key Accomplishments</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Sample Collection Complete</h4>
+                    <p>170 bone marrow biopsies collected from Ghanaian patients with 40% malaria parasite positivity by PCR. 25 samples selected for initial analysis.</p>
+                </div>
+                <div class="card">
+                    <h4>Technical Training</h4>
+                    <p>PhD candidate trained in parasite culture, histological processing, microscopy, and immunohistochemistry techniques by expert researchers at ISS.</p>
+                </div>
+                <div class="card">
+                    <h4>Protocol Optimization</h4>
+                    <p>Identified and resolved technical issues with sample processing. Implemented improved Hammersmith protocol for future collections.</p>
+                </div>
+            </div>
+
+            <h3>Scientific Activities</h3>
+            <div class="card">
+                <h4>Conference Participation</h4>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li>EMBL Conference "BioMalPar XX: biology and pathology of the malaria parasite" (May 2024)</li>
+                    <li>BeMM Symposium (XI Edition) at Sapienza University (September 2024)</li>
+                    <li>ISS Molecular Parasitology seminars (ongoing)</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 P. falciparum Bone Marrow Research Project | Italia-Africa PhD Program</p>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update navigation
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Hide/show hero section
+            const hero = document.getElementById('home-hero');
+            if (pageId === 'home') {
+                hero.style.display = 'flex';
+                document.body.style.paddingTop = '0';
+            } else {
+                hero.style.display = 'none';
+                document.body.style.paddingTop = '80px';
+            }
+            
+            // Close mobile menu
+            document.getElementById('nav-menu').classList.remove('active');
+        }
+
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage('home');
+        });
+
+        // Smooth scrolling for internal links
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A' && e.target.getAttribute('href') === '#') {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
