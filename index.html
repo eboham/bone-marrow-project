@@ -209,7 +209,6 @@
             text-transform: capitalize; /* Apply title case */
         }
 
-
         /* Cards */
         .card-grid {
             display: grid;
@@ -224,6 +223,7 @@
             padding: 2rem;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
         }
 
         .card:hover {
@@ -445,16 +445,6 @@
             box-shadow: 0 5px 10px rgba(0,0,0,0.1);
         }
 
-
-        /* Footer */
-        footer {
-            background: #2c5f7c;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 4rem;
-        }
-
         /* Responsive Design */
         @media (max-width: 768px) {
             .mobile-menu-btn {
@@ -647,7 +637,7 @@
             <h3>Key Collaborators</h3>
             <div class="collaborator-grid">
                 <div class="collaborator-card">
-                    <img src="https://github.com/eboham/bone-marrow-project/blob/main/Francesco.jpeg?raw=true" alt="Dr. Francesco Silvestrini" class="profile-image">
+                    <img src="https://github.com/eboham/bone-marrow-project/blob/main/frank.jpg?raw=true" alt="Dr. Francesco Silvestrini" class="profile-image">
                     <h4>Dr. Francesco Silvestrini</h4>
                     <p><strong>Principal Investigator</strong></p>
                     <p>Istituto Superiore di Sanità (ISS), Rome, Italy</p>
@@ -712,8 +702,16 @@
             </div>
             <div class="card">
                 <h4>📚 Comprehensive Literature Analysis</h4>
-                <p>This section will contain a detailed review of current literature on P. falciparum gametocyte biology, bone marrow microenvironment interactions, and malaria transmission dynamics.</p>
-                <p><em>Content will be added as the research progresses...</em></p>
+                <p>This section contains a detailed review of current literature on P. falciparum gametocyte biology, bone marrow microenvironment interactions, and malaria transmission dynamics.</p>
+            </div>
+
+            <!-- Audio Deep Dive -->
+            <div class="card">
+                <h4>🎧 Deep Dive Conversation – Hidden Gametocyte Stages</h4>
+                <audio controls style="width: 100%; margin-top: 1rem;">
+                    <source src="https://github.com/eboham/bone-marrow-project/blob/main/Deep_dive.mp3?raw=true" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
             </div>
             
             <h3>Key Research Areas</h3>
@@ -729,6 +727,58 @@
                 <div class="card">
                     <h4>Transmission Dynamics</h4>
                     <p>Epidemiological studies on factors affecting gametocyte production and malaria transmission.</p>
+                </div>
+            </div>
+
+            <!-- High-Level Summary -->
+            <h3>High-Level Summary</h3>
+            <div class="card">
+                <p><strong>Gametocyte Biology & Bone Marrow Niche.</strong> <em>P. falciparum</em> commits a small fraction of asexual parasites to sexual development each cycle, giving rise to gametocytes that mature over 10–12&nbsp;days (stages I–V). Immature stages (I–IV) sequester chiefly in extravascular spaces of the bone marrow, sheltered among erythroid precursor “islands”.</p>
+                <p><strong>Active Host–Parasite Interactions.</strong> Immature gametocyte‑infected RBCs adhere to stromal cells, invade erythroblasts, and trigger stromal secretion of pro‑angiogenic cytokines—remodelling the niche to support parasite development and eventual egress of mature stage‑V gametocytes.</p>
+                <p><strong>Transmission Implications.</strong> Because these hidden stages evade peripheral detection, sub‑microscopic gametocytemia in asymptomatic carriers can still infect <em>Anopheles</em> mosquitoes. Parasite‑induced changes in host odour further double mosquito attraction, sustaining year‑round transmission in endemic settings such as Ghana—even through dry seasons.</p>
+            </div>
+
+            <!-- AI‑Assisted Literature Reviews -->
+            <h3>AI‑Assisted Literature Reviews</h3>
+            <div class="card-grid">
+                <!-- ChatGPT Deep Research -->
+                <div class="card">
+                    <a href="https://github.com/eboham/bone-marrow-project/blob/main/ChatGPT_DeepSearch.pdf" target="_blank" style="text-decoration:none; color:inherit;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT Logo" style="width:100%; max-height:150px; object-fit:contain; margin-bottom:1rem;">
+                        <h4>ChatGPT – Deep Research</h4>
+                    </a>
+                </div>
+
+                <!-- Gemini Review -->
+                <div class="card">
+                    <a href="https://drive.google.com/file/d/1xtXttho-MZQDMieRLaZPCs_cJkXfDDuH/view?usp=drive_link" target="_blank" style="text-decoration:none; color:inherit;">
+                        <img src="https://github.com/eboham/bone-marrow-project/blob/main/Google_Gemini_logo.svg.png?raw=true" alt="Gemini Logo" style="width:100%; max-height:150px; object-fit:contain; margin-bottom:1rem;">
+                        <h4>Gemini Review</h4>
+                    </a>
+                </div>
+
+                <!-- DeepSeek Review -->
+                <div class="card">
+                    <a href="https://drive.google.com/file/d/1EGz3Nux_sr6Oh1tVHe9tq9u-bATkTM7g/view?usp=drive_link" target="_blank" style="text-decoration:none; color:inherit;">
+                        <img src="https://github.com/eboham/bone-marrow-project/blob/main/DeepSeek_logo_icon.png?raw=true" alt="DeepSeek Logo" style="width:100%; max-height:150px; object-fit:contain; margin-bottom:1rem;">
+                        <h4>DeepSeek Review</h4>
+                    </a>
+                </div>
+
+                <!-- Elicit Review -->
+                <div class="card">
+                    <a href="https://drive.google.com/file/d/1wkcrP9Rb-keTjrkVRmB6HPY72EDnByZs/view?usp=sharing" target="_blank" style="text-decoration:none; color:inherit;">
+                        <img src="https://github.com/eboham/bone-marrow-project/blob/main/66b3a8471aa045a8a749d9a2.png?raw=true" alt="Elicit Logo" style="width:100%; max-height:150px; object-fit:contain; margin-bottom:1rem;">
+                        <h4>Elicit (Free) Review</h4>
+                    </a>
+                </div>
+
+                <!-- ChatGPT Normal Review -->
+                <div class="card">
+                    <a href="https://drive.google.com/file/d/1fhZwIWRkc450OqOUiqWK0prO72NoCzDb/view?usp=drive_link" target="_blank" style="text-decoration:none; color:inherit;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT Logo" style="width:100%; max-height:150px; object-fit:contain; margin-bottom:1rem;">
+                        <h4>ChatGPT – Normal</h4>
+                    </a>
                 </div>
             </div>
         </div>
